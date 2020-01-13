@@ -15,18 +15,24 @@ public class IndexController {
 	
 	private InterfazServicio servicio;
 	
+	/**
+	 * 
+	 *Inyectar dependencia vía método constructor
+	 */
+
+	@Autowired
+	public IndexController(InterfazServicio servicio) {
+		this.servicio = servicio;
+	}
+
 	@GetMapping({"/","","/index"})
 	public String index(Model model) {
 		model.addAttribute("objeto", servicio.operacion());
 		return "index";
 	}
 
-	/**
-	 * 
-	 *Inyectar dependencia vía método set
-	 */
 	
-	@Autowired
+
 	public void setServicio(InterfazServicio servicio) {
 		this.servicio = servicio;
 	}
