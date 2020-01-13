@@ -12,18 +12,9 @@ import com.ideasbolsa.springboot.web.id.app.models.service.InterfazServicio;
 @Controller
 public class IndexController {
 	
-	
+	@Autowired
 	private InterfazServicio servicio;
 	
-	/**
-	 * 
-	 *Inyectar dependencia vía método constructor
-	 */
-
-	@Autowired
-	public IndexController(InterfazServicio servicio) {
-		this.servicio = servicio;
-	}
 
 	@GetMapping({"/","","/index"})
 	public String index(Model model) {
@@ -31,13 +22,5 @@ public class IndexController {
 		return "index";
 	}
 
-	
-
-	public void setServicio(InterfazServicio servicio) {
-		this.servicio = servicio;
-	}
-	
-	
-	
 
 }
