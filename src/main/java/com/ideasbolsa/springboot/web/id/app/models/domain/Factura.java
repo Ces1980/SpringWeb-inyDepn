@@ -3,11 +3,13 @@ package com.ideasbolsa.springboot.web.id.app.models.domain;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
 
 @Component
 public class Factura {
@@ -22,10 +24,21 @@ public class Factura {
 	@Qualifier("itemsFacturaOficina")
 	private List<ItemFactura> items;
 	
+	
 	@PostConstruct
 	public void inicializar() {
 		cliente.setNombre(cliente.getNombre().concat(" ").concat("Vargas"));
 		descripcion = descripcion.concat(" del cliente").concat(cliente.getNombre());
+	}
+	
+	/**
+	 * @PreDestroy destruye cuando se termina de ejecutar el programa o se
+	 * ordena el termino de ejecucion de nuestro programa en el servidor
+	 *
+	 */
+	@PreDestroy
+	public void destruir() {
+		System.out.println("Factura destruida: ".concat(descripcion));
 	}
 
 	public String getDescripcion() {
