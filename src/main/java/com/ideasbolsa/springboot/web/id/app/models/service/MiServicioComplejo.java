@@ -5,12 +5,10 @@ import org.springframework.stereotype.Service;
 
 
 /**
- * Tenemos dos clases que implementan la interfaz "InterfazServicio"
- * Con la anotación @Primary se le da prioridad a la clase que se quiere implementar
  * 
  */
-@Primary
-@Service("miServicioComplejo")
+//@Primary
+//@Service("miServicioComplejo")
 public class MiServicioComplejo implements InterfazServicio{
 
 	

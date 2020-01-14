@@ -20,7 +20,7 @@ public class IndexController {
 	
 	
 	@Autowired
-	@Qualifier("miServicioSimple")
+	@Qualifier("miServicioComplejo")
 	private InterfazServicio servicio;
 	
 
