@@ -2,6 +2,8 @@ package com.ideasbolsa.springboot.web.id.app.models.domain;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,6 +21,12 @@ public class Factura {
 	@Autowired
 	@Qualifier("itemsFacturaOficina")
 	private List<ItemFactura> items;
+	
+	@PostConstruct
+	public void inicializar() {
+		cliente.setNombre(cliente.getNombre().concat(" ").concat("Vargas"));
+		descripcion = descripcion.concat(" del cliente").concat(cliente.getNombre());
+	}
 
 	public String getDescripcion() {
 		return descripcion;
